@@ -64,3 +64,67 @@
 	.story-step { min-height: 100svh; height: 100svh; }
 }
 @keyframes story-change-mobile { 0% { opacity: .22; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+
+/* Narrative video replaces the interactive 3D canvas. */
+.experience-stage { background: #18202b; }
+.story-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.scene-label { z-index: 2; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,.7); }
+.scene-label strong { color: #dce8ff; }
+.scene-dot { background: #dce8ff; box-shadow: 0 0 0 5px rgba(220,232,255,.2); }
+.live-story { z-index: 3; }
+
+
+/* Mobile layout: preserve the full video frame and keep controls readable. */
+@media (max-width: 780px) {
+  .site-header {
+    padding: calc(10px + env(safe-area-inset-top)) 16px 10px;
+    gap: 10px;
+  }
+  .brand { min-width: 0; gap: 8px; font-size: 13px; }
+  .brand-logo { width: 29px; height: 34px; flex: 0 0 29px; }
+  .brand em { display: none; }
+  .header-actions { flex: 0 0 auto; gap: 0; }
+  .instagram-link { display: none; }
+  .header-contact { gap: 6px; font-size: 9px; white-space: nowrap; }
+  .header-contact img { width: 19px; height: 19px; }
+  .experience-stage {
+    height: 56svh;
+    min-height: 320px;
+    max-height: 520px;
+  }
+  .story-video {
+    object-fit: contain;
+    object-position: center;
+    background: #18202b;
+  }
+  .live-story {
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    max-height: calc(100% - 24px);
+    overflow: auto;
+    padding: 12px 14px 14px;
+    background: rgba(247,249,252,.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .live-story .step-index { margin-bottom: 12px; }
+  .live-story .step-kicker { margin-bottom: 8px; }
+  .live-story h2 { margin-bottom: 10px; font-size: clamp(30px, 9vw, 44px); }
+  .live-story > p:not(.step-kicker) { margin-bottom: 12px; font-size: 12px; line-height: 1.55; }
+  .scene-label { bottom: 18px; left: 18px; font-size: 9px; }
+  .story-step { min-height: 100svh; height: 100svh; }
+}
+@media (max-width: 380px) {
+  .site-header { padding-right: 12px; padding-left: 12px; }
+  .brand { font-size: 12px; }
+  .header-contact { font-size: 8px; }
+  .experience-stage { height: 52svh; min-height: 290px; }
+  .live-story { left: 8px; right: 8px; bottom: calc(8px + env(safe-area-inset-bottom)); padding: 10px 12px 12px; }
+}
+@media (max-height: 620px) and (max-width: 780px) {
+  .experience-stage { height: 60svh; min-height: 280px; }
+  .live-story { bottom: calc(8px + env(safe-area-inset-bottom)); }
+  .live-story .step-index { margin-bottom: 7px; }
+  .live-story h2 { font-size: 30px; }
+}
