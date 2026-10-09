@@ -1,93 +1,138 @@
 import './style.css';
 
 const stageData = [
-  { status: 'Visão final', product: 'Sapato social', kicker: 'A forma final', title: 'O social como destino', detail: 'O sapato social define a linguagem da experiência. Acompanhe a montagem do sapato social e a precis\u00e3o que cada material precisa entregar.' },
-  { status: 'Solado destacado', product: 'Solado', kicker: 'Estrutura', title: 'O solado sustenta a ideia', detail: 'Solados para calçados sociais com diferentes acabamentos e composições. A disponibilidade e as opções devem ser confirmadas pelo WhatsApp.' },
-  { status: 'Palmilha destacada', product: 'Palmilha', kicker: 'Conforto', title: 'A palmilha encontra o pé', detail: 'A palmilha participa do conforto e da estrutura interna do calçado. Consulte os modelos disponíveis para sua produção.' },
-  { status: 'Cola aplicada', product: 'Cola para montagem', kicker: 'União', title: 'A cola aproxima as partes', detail: 'Colas e adesivos para a montagem de calçados. As características técnicas e a disponibilidade são informadas pela equipe.' },
-  { status: 'Cabedal em produção', product: 'Couro ou sintético para cabedal', kicker: 'Cabedal', title: 'Cortar. Produzir. Costurar.', detail: 'Couro e materiais sintéticos para o cabedal, apresentados na sequência de corte, preparação e costura.' },
-  { status: 'Embalagem final', product: 'Cadarço e caixa de sapatos', kicker: 'Acabamento', title: 'Pronto para entrar em cena', detail: 'Cadarços e caixas de sapatos completam a apresentação. A embalagem também é um produto fornecido pela loja.' },
+  { product: 'Sapato social', kicker: 'Inspiração', title: 'Sapato social', detail: 'Uma referência de calçado social para apresentar combinações de materiais e acabamentos.', image: '/Imagem01.png', imageAlt: 'Sapato feminino elegante e materiais para fabricação de calçados' },
+  { product: 'Solado', kicker: 'Solados', title: 'Solados para calçados sociais', detail: 'Conheça opções de solados para diferentes projetos de calçados sociais. Consulte modelos e disponibilidade com a equipe.', image: '/Imagem02.png', imageAlt: 'Diferentes solados para fabricação de calçados femininos' },
+  { product: 'Palmilha', kicker: 'Palmilhas', title: 'Palmilhas para calçados', detail: 'Palmilhas para compor a parte interna do calçado. Fale com a equipe para consultar opções disponíveis.', image: '/imagem03.png', imageAlt: 'Palmilhas para diferentes modelos de calçados femininos' },
+  { product: 'Cola para montagem', kicker: 'Colas e adesivos', title: 'Colas para montagem de calçados', detail: 'Colas e adesivos usados na montagem de calçados. Consulte a equipe sobre características técnicas e disponibilidade.', image: '/MuralConceitual.png', imageAlt: 'Mural de calçados, couros e materiais para montagem' },
+  { product: 'Couro ou sintético para cabedal', kicker: 'Materiais para cabedal', title: 'Couro e materiais sintéticos', detail: 'Materiais para compor o cabedal de calçados. Consulte a equipe para saber quais opções estão disponíveis.', image: '/MuralConceitual.png', imageAlt: 'Mural de couros e calçados em diferentes acabamentos' },
+  { product: 'Cadarço e caixa de sapatos', kicker: 'Acessórios e embalagens', title: 'Cadarços e caixas para calçados', detail: 'Detalhes e embalagens para completar a apresentação dos seus calçados. Consulte modelos e disponibilidade.', image: '/MuralCSaparosDiversos.png', imageAlt: 'Composição com diversos modelos de calçados e acessórios' },
 ];
 
-const video = document.querySelector('#story-video');
-const clipDurations = [0.084, 0.534, 0.386, 0.591, 0.956, 1.758];
-const clipsTotalDuration = clipDurations.reduce((total, duration) => total + duration, 0);
-const sceneStatus = document.querySelector('#scene-status');
-const liveIndex = document.querySelector('#live-index');
-const liveKicker = document.querySelector('#live-kicker');
-const liveTitle = document.querySelector('#live-title');
-const liveCopy = document.querySelector('#live-copy');
-const liveMore = document.querySelector('#live-more');
-const liveStory = document.querySelector('.live-story');
-const steps = [...document.querySelectorAll('.story-step')];
+const carousel = document.querySelector('[data-carousel]');
+const viewport = document.querySelector('#carousel-viewport');
+const track = document.querySelector('#carousel-track');
+const dots = document.querySelector('[data-carousel-dots]');
+const previousButton = document.querySelector('[data-carousel-prev]');
+const nextButton = document.querySelector('[data-carousel-next]');
 const detailDialog = document.querySelector('#detail-dialog');
 const dialogKicker = document.querySelector('#dialog-kicker');
 const dialogTitle = document.querySelector('#dialog-title');
 const dialogCopy = document.querySelector('#dialog-copy');
-let activeStep = 0;
-let renderedStep = -1;
+const dialogWhatsapp = document.querySelector('#dialog-whatsapp');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-let videoReady = false;
-let scrollFrame = 0;
 
-function syncVideoToScroll() {
-  scrollFrame = 0;
-  if (!videoReady || !Number.isFinite(video.duration) || !steps.length) return;
-  let step = 0;
-  for (let index = 1; index < steps.length; index += 1) {
-    const top = steps[index].getBoundingClientRect().top + window.scrollY;
-    if (window.scrollY >= top) step = index;
-    else break;
-  }
-  const stepTop = steps[step].getBoundingClientRect().top + window.scrollY;
-  const nextTop = step < steps.length - 1
-    ? steps[step + 1].getBoundingClientRect().top + window.scrollY
-    : stepTop + steps[step].getBoundingClientRect().height;
-  const progress = Math.min(1, Math.max(0, (window.scrollY - stepTop) / Math.max(1, nextTop - stepTop)));
-  if (activeStep !== step) {
-    activeStep = step;
-    applyStage(step);
-  }
-  const segmentStart = clipDurations.slice(0, step).reduce((total, duration) => total + duration, 0);
-  const segmentDuration = clipDurations[step];
-  const normalizedStart = segmentStart / clipsTotalDuration;
-  const normalizedDuration = segmentDuration / clipsTotalDuration;
-  const targetTime = Math.min(
-    Math.max(0, video.duration - 0.05),
-    video.duration * (normalizedStart + normalizedDuration * progress),
-  );
-  if (Math.abs(video.currentTime - targetTime) > 0.04) video.currentTime = targetTime;
+let activeStep = 0;
+let autoplayTimer = 0;
+let isPaused = reducedMotion;
+let isCarouselVisible = true;
+
+function renderCards() {
+  track.innerHTML = stageData.map((item, index) => `
+    <article class="carousel-card${index === 0 ? ' is-active' : ''}" data-step="${index}" aria-labelledby="card-title-${index}">
+      <div class="card-visual"><img src="${item.image}" alt="${item.imageAlt}" loading="lazy" /></div>
+      <div class="card-content">
+        <p class="step-kicker">${item.kicker}</p>
+        <h3 id="card-title-${index}">${item.title}</h3>
+        <p>${item.detail}</p>
+        <strong class="card-product">${item.product}</strong>
+        <button class="more-button" data-detail="${index}">Saiba mais <span>↗</span></button>
+      </div>
+    </article>
+  `).join('');
+
+  dots.innerHTML = stageData.map((item, index) => `
+    <button type="button" class="carousel-dot${index === 0 ? ' is-active' : ''}" data-carousel-dot="${index}" aria-label="Selecionar produto ${index + 1}" aria-current="${index === 0 ? 'true' : 'false'}"></button>
+  `).join('');
 }
 
-function requestVideoSync() {
-  if (!scrollFrame) scrollFrame = requestAnimationFrame(syncVideoToScroll);
+function updateActiveStep(step, announce = true) {
+  activeStep = Math.max(0, Math.min(step, stageData.length - 1));
+  [...track.children].forEach((card, index) => card.classList.toggle('is-active', index === activeStep));
+  [...dots.children].forEach((dot, index) => {
+    const isActive = index === activeStep;
+    dot.classList.toggle('is-active', isActive);
+    dot.setAttribute('aria-current', String(isActive));
+  });
 }
 
-function applyStage(step) {
-  if (renderedStep !== step && !reducedMotion) {
-    liveStory.classList.remove('is-changing');
-    void liveStory.offsetWidth;
-    liveStory.classList.add('is-changing');
-  }
-  sceneStatus.textContent = stageData[step].status;
-  liveIndex.textContent = `${String(step + 1).padStart(2, '0')} / 06`;
-  liveKicker.textContent = stageData[step].kicker;
-  liveTitle.textContent = stageData[step].title;
-  liveCopy.textContent = stageData[step].detail;
-  liveMore.dataset.detail = String(step);
-  steps.forEach((item, index) => item.classList.toggle('is-active', index === step));
-  renderedStep = step;
+function scrollToStep(step, behavior = reducedMotion ? 'auto' : 'smooth') {
+  const target = track.children[step];
+  if (!target) return;
+  viewport.scrollTo({ left: target.offsetLeft - (viewport.clientWidth - target.clientWidth) / 2, behavior });
+  updateActiveStep(step);
 }
 
-video.addEventListener('loadedmetadata', () => {
-  videoReady = true;
-  requestVideoSync();
+function restartAutoplay() {
+  window.clearTimeout(autoplayTimer);
+  if (isPaused || !isCarouselVisible) return;
+  autoplayTimer = window.setTimeout(() => {
+    const nextStep = activeStep === stageData.length - 1 ? 0 : activeStep + 1;
+    scrollToStep(nextStep);
+    restartAutoplay();
+  }, 5000);
+}
+
+function pauseAutoplay() {
+  window.clearTimeout(autoplayTimer);
+}
+
+renderCards();
+updateActiveStep(0, false);
+restartAutoplay();
+
+const cardObserver = new IntersectionObserver((entries) => {
+  const visibleCard = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+  if (visibleCard) updateActiveStep(Number(visibleCard.target.dataset.step));
+}, { root: viewport, threshold: [0.55, 0.8] });
+ [...track.children].forEach((card) => cardObserver.observe(card));
+
+carousel.addEventListener('mouseenter', pauseAutoplay);
+carousel.addEventListener('mouseleave', restartAutoplay);
+carousel.addEventListener('focusin', pauseAutoplay);
+carousel.addEventListener('focusout', (event) => { if (!carousel.contains(event.relatedTarget)) restartAutoplay(); });
+viewport.addEventListener('pointerdown', pauseAutoplay, { passive: true });
+viewport.addEventListener('pointerup', () => { if (!isPaused) restartAutoplay(); }, { passive: true });
+viewport.addEventListener('pointercancel', () => { if (!isPaused) restartAutoplay(); }, { passive: true });
+viewport.addEventListener('scrollend', () => { if (!isPaused) restartAutoplay(); }, { passive: true });
+viewport.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowRight') { event.preventDefault(); scrollToStep((activeStep + 1) % stageData.length, 'auto'); }
+  if (event.key === 'ArrowLeft') { event.preventDefault(); scrollToStep((activeStep - 1 + stageData.length) % stageData.length, 'auto'); }
+  if (event.key === 'Home') { event.preventDefault(); scrollToStep(0, 'auto'); }
+  if (event.key === 'End') { event.preventDefault(); scrollToStep(stageData.length - 1, 'auto'); }
 });
-window.addEventListener('scroll', requestVideoSync, { passive: true });
-window.addEventListener('resize', requestVideoSync);
-applyStage(0);
-requestVideoSync();
+previousButton.addEventListener('click', () => { scrollToStep((activeStep - 1 + stageData.length) % stageData.length); restartAutoplay(); });
+nextButton.addEventListener('click', () => { scrollToStep((activeStep + 1) % stageData.length); restartAutoplay(); });
+dots.addEventListener('click', (event) => {
+  const dot = event.target.closest('[data-carousel-dot]');
+  if (!dot) return;
+  scrollToStep(Number(dot.dataset.carouselDot));
+  restartAutoplay();
+});
 
-document.querySelectorAll('[data-detail]').forEach((button) => button.addEventListener('click', () => { const data = stageData[Number(button.dataset.detail)]; dialogKicker.textContent = data.kicker; dialogTitle.textContent = data.title; dialogCopy.textContent = data.detail; detailDialog.showModal(); }));
+const visibilityObserver = new IntersectionObserver(([entry]) => {
+  isCarouselVisible = entry.isIntersecting;
+  if (isCarouselVisible) restartAutoplay();
+  else pauseAutoplay();
+}, { threshold: 0.2 });
+visibilityObserver.observe(carousel);
+document.addEventListener('visibilitychange', () => { if (document.hidden) pauseAutoplay(); else restartAutoplay(); });
+
+function openDetail(index) {
+  const data = stageData[index];
+  if (!data) return;
+  dialogKicker.textContent = 'Produto';
+  dialogTitle.textContent = data.title;
+  dialogCopy.textContent = data.detail;
+  dialogWhatsapp.href = `https://api.whatsapp.com/send/?phone=%2B556281598510&text=${encodeURIComponent(`Olá! Vi o produto "${data.product}" no site da Território do Couro. Você pode me informar a disponibilidade e o preço?`)}&type=phone_number&app_absent=0`;
+  pauseAutoplay();
+  detailDialog.showModal();
+}
+
+track.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-detail]');
+  if (button) openDetail(Number(button.dataset.detail));
+});
 document.querySelector('.dialog-close').addEventListener('click', () => detailDialog.close());
+detailDialog.addEventListener('close', () => { if (!isPaused && isCarouselVisible) restartAutoplay(); });
 detailDialog.addEventListener('click', (event) => { if (event.target === detailDialog) detailDialog.close(); });
