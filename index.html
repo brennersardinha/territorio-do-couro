@@ -3,64 +3,375 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Conheça a Território do Couro, loja de matérias-primas e componentes para calçados em Goiânia. Veja alguns produtos e consulte disponibilidade e preços pelo WhatsApp." />
-    <meta property="og:title" content="Conheça a Território do Couro" />
-    <meta property="og:description" content="Matérias-primas e componentes para calçados. Conheça a loja em Goiânia e fale com a nossa equipe." />
     <title>Território do Couro | Matérias-primas para calçados em Goiânia</title>
+    <meta name="description" content="Loja de matérias-primas e componentes para fabricação de calçados em Goiânia: couros e sintéticos, solados, palmilhas, colas e acessórios. Enviamos para todo o Brasil. Consulte disponibilidade e preços pelo WhatsApp." />
+    <meta name="theme-color" content="#f6f1ea" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Território do Couro" />
+    <meta property="og:title" content="Território do Couro | Matérias-primas para calçados em Goiânia" />
+    <meta property="og:description" content="Couros, solados, palmilhas, colas e acessórios para fabricação de calçados. Enviamos para todo o Brasil. Visite a loja em Goiânia ou fale pelo WhatsApp." />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" as="image" href="/img/capa.webp" media="(min-width: 861px)" />
+    <link rel="preload" as="image" href="/img/capa-retrato.webp" media="(max-width: 860px)" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Store",
+        "name": "Território do Couro",
+        "description": "Loja de matérias-primas e componentes para fabricação de calçados.",
+        "image": "/og-image.jpg",
+        "logo": "/icon-512.png",
+        "telephone": "+55-62-8159-8510",
+        "taxID": "00.939.693/0001-80",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Av. Mato Grosso, 114 - Setor Campinas",
+          "addressLocality": "Goiânia",
+          "addressRegion": "GO",
+          "postalCode": "74513-040",
+          "addressCountry": "BR"
+        },
+        "areaServed": { "@type": "Country", "name": "Brasil" },
+        "sameAs": ["https://www.instagram.com/territorio.docouro/"]
+      }
+    </script>
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="#inicio" aria-label="Território - início">
-        <img class="brand-logo" src="/LogoSemFundo.png" alt="" />
-        <span>Território do Couro <em>matérias-primas</em></span>
-      </a>
-      <nav class="header-actions" aria-label="Canais de contato"><a class="instagram-link" href="https://www.instagram.com/_territoriodocouro/" target="_blank" rel="noreferrer"><img src="/LogoInsta.png" alt="" />Instagram <span>↗</span></a><a class="header-contact" href="https://api.whatsapp.com/send/?phone=%2B556281598510&text=Ol%C3%A1%21%20Conheci%20a%20Territ%C3%B3rio%20do%20Couro%20pelo%20site%20e%20gostaria%20de%20conhecer%20os%20produtos%20para%20fabrica%C3%A7%C3%A3o%20de%20cal%C3%A7ados.%20Podem%20me%20informar%20a%20disponibilidade%20e%20os%20pre%C3%A7os%3F&type=phone_number&app_absent=0" target="_blank" rel="noreferrer"><img src="/LogoWhatsapp.png" alt="" />Falar no WhatsApp <span>↗</span></a></nav>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="site-header" data-header>
+      <div class="container header-inner">
+        <a class="brand" href="#inicio" aria-label="Território do Couro, voltar ao início">
+          <img src="/logo.png" alt="" width="172" height="213" />
+          <span class="brand-name">Território<br />do Couro</span>
+        </a>
+
+        <nav class="site-nav" id="site-nav" aria-label="Navegação principal" data-nav>
+          <a href="#produtos">Produtos</a>
+          <a href="#sobre">A loja</a>
+          <a href="#como-comprar">Como comprar</a>
+          <a href="#visite">Visite</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="icon-link" href="https://www.instagram.com/territorio.docouro/" target="_blank" rel="noopener" aria-label="Instagram da Território do Couro">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-instagram" /></svg>
+          </a>
+          <a class="btn btn-primary btn-sm" href="https://wa.me/556281598510" data-wa="Olá! Vim pelo site da Território do Couro e gostaria de consultar disponibilidade e preços." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp" /></svg>
+            <span>WhatsApp</span>
+          </a>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu" data-nav-toggle>
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
     </header>
 
-    <main>
+    <main id="conteudo">
+      <!-- Hero -->
       <section class="hero" id="inicio">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Matérias-primas para calçados · Goiânia</p>
-          <h1>Tudo para dar forma às suas <i>ideias</i> em calçados.</h1>
-          <p class="hero-lede">Conheça a Território do Couro: uma loja de matérias-primas e componentes para fabricação de calçados. Veja alguns dos produtos e fale com a nossa equipe para consultar disponibilidade e preços.</p>
-          <a class="scroll-cue" href="#experiencia"><span class="scroll-line"></span><span>Conheça nossos produtos</span></a>
-        </div>
-        <figure class="hero-image" aria-label="Sapato branco desmontado e seus componentes">
-          <img src="/Capa.png" alt="Materiais, componentes e calçados femininos para fabricação" />
-        </figure>
-        <div class="hero-meta reveal"><span>Matérias-primas e componentes</span><span>Goiânia · GO</span></div>
-      </section>
-
-      <section class="experience" id="experiencia" aria-labelledby="experience-title">
-        <div class="experience-heading">
-          <p class="eyebrow">Território do Couro</p>
-          <h2 id="experience-title">Conheça nossos <i>produtos.</i></h2>
-          <p>Explore alguns dos materiais e componentes que você encontra na Território do Couro. Quer saber mais sobre um produto? Consulte a equipe pelo WhatsApp.</p>
-        </div>
-        <div class="carousel" data-carousel>
-          <div class="carousel-viewport" id="carousel-viewport" tabindex="0" aria-label="Mostruário de produtos">
-            <div class="carousel-track" id="carousel-track"></div>
-          </div>
-          <div class="carousel-controls">
-            <button type="button" class="carousel-arrow" data-carousel-prev aria-label="Voltar aos produtos anteriores">←</button>
-            <div class="carousel-dots" data-carousel-dots aria-label="Selecionar produto"></div>
-            <button type="button" class="carousel-arrow" data-carousel-next aria-label="Ver os próximos produtos">→</button>
+        <picture class="hero-media">
+          <source media="(max-width: 860px)" srcset="/img/capa-retrato.webp" />
+          <img src="/img/capa.webp" alt="Couros, solados, palmilhas, cadarços e fivelas dispostos sobre uma bancada de ateliê" width="2400" height="1029" fetchpriority="high" />
+        </picture>
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">Matérias-primas para calçados</p>
+            <h1>Tudo o que dá forma ao <em>seu calçado</em>.</h1>
+            <p class="lede">Couros, solados, palmilhas, colas e acessórios para quem fabrica calçados.</p>
+            <p class="hero-badge">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-truck" /></svg>
+              Enviamos para todo o Brasil
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://wa.me/556281598510" data-wa="Olá! Conheci a Território do Couro pelo site e gostaria de conhecer os produtos para fabricação de calçados. Podem me informar a disponibilidade e os preços?" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp" /></svg>
+                Consultar pelo WhatsApp
+              </a>
+              <a class="btn btn-ghost" href="#produtos">Ver produtos</a>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="contact-band">
-        <div class="contact-heading"><p class="eyebrow">Atendimento pelo WhatsApp e Instagram</p><h2>Procurando materiais para o seu próximo <i>projeto?</i></h2><p class="contact-lede">Fale com a equipe da Território do Couro para conhecer os produtos, consultar disponibilidade e saber os preços. Você também pode acompanhar a loja pelo Instagram.</p><div class="contact-socials"><a class="whatsapp-button" href="https://api.whatsapp.com/send/?phone=%2B556281598510&text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Territ%C3%B3rio%20do%20Couro%20e%20gostaria%20de%20falar%20com%20a%20equipe%20sobre%20os%20produtos%20da%20loja.&type=phone_number&app_absent=0" target="_blank" rel="noreferrer"><img src="/LogoWhatsapp.png" alt="" /><span>Falar pelo WhatsApp</span><strong>↗</strong></a><a class="instagram-button" href="https://www.instagram.com/_territoriodocouro/" target="_blank" rel="noreferrer"><img src="/LogoInsta.png" alt="" /><span>Seguir no Instagram</span><strong>↗</strong></a></div></div>
-        <div class="contact-action"><div class="map-frame contact-map"><iframe title="Localização da Território do Couro" src="https://www.google.com/maps?q=Av.+Mato+Grosso,+114,+Setor+Campinas,+Goiânia+-+GO,+74513-040&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div><p class="map-caption">Visite a Território do Couro em Goiânia.<br />Estamos no Setor Campinas. Será um prazer receber você na loja.</p></div>
+      <!-- Destaques -->
+      <section class="highlights" aria-label="Destaques da loja">
+        <ul class="container highlights-list">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-layers" /></svg>
+            <div><strong>Do cabedal ao solado</strong><span>Materiais para cada etapa</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat" /></svg>
+            <div><strong>Atendimento direto</strong><span>Preços pelo WhatsApp</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-truck" /></svg>
+            <div><strong>Envio para todo o Brasil</strong><span>Receba onde estiver</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin" /></svg>
+            <div><strong>Loja em Goiânia</strong><span>Setor Campinas</span></div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Produtos -->
+      <section class="section" id="produtos" aria-labelledby="produtos-title">
+        <div class="container">
+          <header class="section-head reveal">
+            <p class="eyebrow">Nossos produtos</p>
+            <h2 id="produtos-title">O que você encontra <em>na loja</em></h2>
+            <p>Toque em uma categoria para consultar modelos, cores e preços.</p>
+          </header>
+
+          <div class="product-grid">
+            <article class="product-card product-card--wide reveal">
+              <div class="product-media"><img src="/img/couros.webp" alt="Rolos e amostras de couro em tons nude, caramelo e café ao lado de um scarpin" width="1200" height="800" loading="lazy" /></div>
+              <div class="product-body">
+                <p class="product-tag">Cabedal</p>
+                <h3>Couros e sintéticos</h3>
+                <p>Cores, texturas e acabamentos para o cabedal.</p>
+                <a class="product-link" href="https://wa.me/556281598510" data-wa="Olá! Vi no site a categoria Couros e sintéticos. Quais opções estão disponíveis e quais são os preços?" target="_blank" rel="noopener">Consultar <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="product-media"><img src="/img/solados.webp" alt="Solados em couro, borracha tratorada e tons nude e preto" width="1200" height="800" loading="lazy" /></div>
+              <div class="product-body">
+                <p class="product-tag">Base</p>
+                <h3>Solados</h3>
+                <p>Sociais, casuais e femininos, em várias alturas.</p>
+                <a class="product-link" href="https://wa.me/556281598510" data-wa="Olá! Vi no site a categoria Solados. Quais modelos estão disponíveis e quais são os preços?" target="_blank" rel="noopener">Consultar <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="product-media"><img src="/img/palmilhas.webp" alt="Palmilhas anatômicas e perfuradas ao lado de sapatilhas e scarpins" width="1200" height="800" loading="lazy" /></div>
+              <div class="product-body">
+                <p class="product-tag">Conforto</p>
+                <h3>Palmilhas</h3>
+                <p>Opções para diversos tipos de modelo.</p>
+                <a class="product-link" href="https://wa.me/556281598510" data-wa="Olá! Vi no site a categoria Palmilhas. Quais opções estão disponíveis e quais são os preços?" target="_blank" rel="noopener">Consultar <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="product-media"><img src="/img/montagem.webp" alt="Tênis branco desmontado mostrando cabedal, palmilha e solado" width="802" height="447" loading="lazy" /></div>
+              <div class="product-body">
+                <p class="product-tag">Montagem</p>
+                <h3>Colas e adesivos</h3>
+                <p>Para unir cabedal, palmilha e solado.</p>
+                <a class="product-link" href="https://wa.me/556281598510" data-wa="Olá! Vi no site a categoria Colas e adesivos. Quais opções estão disponíveis e quais são os preços?" target="_blank" rel="noopener">Consultar <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="product-card reveal">
+              <div class="product-media"><img src="/img/aviamentos.webp" alt="Cadarços encerados, fivelas douradas e tiras de couro" width="1200" height="709" loading="lazy" /></div>
+              <div class="product-body">
+                <p class="product-tag">Acabamento</p>
+                <h3>Cadarços e acessórios</h3>
+                <p>Cadarços, fivelas, detalhes e caixas.</p>
+                <a class="product-link" href="https://wa.me/556281598510" data-wa="Olá! Vi no site a categoria Cadarços, acessórios e caixas. Quais opções estão disponíveis e quais são os preços?" target="_blank" rel="noopener">Consultar <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sobre -->
+      <section class="section section--tint" id="sobre" aria-labelledby="sobre-title">
+        <div class="container about">
+          <figure class="about-media reveal">
+            <img src="/img/calcados.webp" alt="Diversos modelos de calçados femininos: scarpins, sandálias, mocassins e botas" width="704" height="388" loading="lazy" />
+          </figure>
+          <div class="about-copy reveal">
+            <p class="eyebrow">A loja</p>
+            <h2 id="sobre-title">Um território para <em>quem cria</em> calçados</h2>
+            <p>Do corte do cabedal ao acabamento final, reunimos em um só lugar os materiais para produções em série ou peças sob medida.</p>
+            <ul class="tag-list" aria-label="Para quem atendemos">
+              <li>Fábricas</li>
+              <li>Ateliês</li>
+              <li>Designers</li>
+              <li>Marcas autorais</li>
+              <li>Sapateiros</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Galeria -->
+      <section class="section gallery" aria-labelledby="galeria-title">
+        <div class="container">
+          <header class="gallery-head reveal">
+            <div>
+              <p class="eyebrow">Instagram</p>
+              <h2 id="galeria-title">Inspire-se com <em>a gente</em></h2>
+            </div>
+            <a class="btn btn-ghost btn-sm" href="https://www.instagram.com/territorio.docouro/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-instagram" /></svg>
+              @territorio.docouro
+            </a>
+          </header>
+        </div>
+        <div class="gallery-track" tabindex="0" aria-label="Galeria de fotos, deslize para ver mais">
+          <a class="gallery-item" href="https://www.instagram.com/territorio.docouro/" target="_blank" rel="noopener"><img src="/img/galeria-bota.webp" alt="Bota de couro caramelo ao lado de linhas e recortes de couro" width="688" height="720" loading="lazy" /></a>
+          <a class="gallery-item" href="https://www.instagram.com/territorio.docouro/" target="_blank" rel="noopener"><img src="/img/galeria-tenis.webp" alt="Tênis rosé desmontado com cadarço, palmilha e solado" width="520" height="386" loading="lazy" /></a>
+          <a class="gallery-item" href="https://www.instagram.com/territorio.docouro/" target="_blank" rel="noopener"><img src="/img/galeria-scarpin.webp" alt="Scarpin nude com amostras de couro" width="800" height="800" loading="lazy" /></a>
+          <a class="gallery-item" href="https://www.instagram.com/territorio.docouro/" target="_blank" rel="noopener"><img src="/img/galeria-palmilhas.webp" alt="Palmilhas e solados em tons nude, caramelo e preto" width="700" height="700" loading="lazy" /></a>
+          <a class="gallery-item" href="https://www.instagram.com/territorio.docouro/" target="_blank" rel="noopener"><img src="/img/mural.webp" alt="Mural com scarpins, sandálias, mocassins e botas" width="687" height="387" loading="lazy" /></a>
+        </div>
+      </section>
+
+      <!-- Como comprar -->
+      <section class="section section--tint" id="como-comprar" aria-labelledby="comprar-title">
+        <div class="container">
+          <header class="section-head section-head--center reveal">
+            <p class="eyebrow">Como comprar</p>
+            <h2 id="comprar-title">Simples e <em>direto</em></h2>
+          </header>
+          <ol class="steps">
+            <li class="reveal">
+              <span class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-layers" /></svg></span>
+              <div>
+                <span class="step-num">01</span>
+                <h3>Escolha</h3>
+                <p>Separe os materiais do seu projeto.</p>
+              </div>
+            </li>
+            <li class="reveal">
+              <span class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp" /></svg></span>
+              <div>
+                <span class="step-num">02</span>
+                <h3>Chame no WhatsApp</h3>
+                <p>Mande sua lista ou uma foto de referência.</p>
+              </div>
+            </li>
+            <li class="reveal">
+              <span class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-truck" /></svg></span>
+              <div>
+                <span class="step-num">03</span>
+                <h3>Receba ou retire</h3>
+                <p>Enviamos para todo o Brasil ou retire na loja.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Visite / contato -->
+      <section class="visit" id="visite" aria-labelledby="visite-title">
+        <div class="container visit-inner">
+          <div class="visit-copy reveal">
+            <p class="eyebrow">Visite a loja</p>
+            <h2 id="visite-title">Será um prazer <em>receber você</em></h2>
+            <p class="lede">Fale com a equipe ou venha conhecer a loja pessoalmente.</p>
+
+            <dl class="visit-info">
+              <div>
+                <dt>Endereço</dt>
+                <dd><address>Av. Mato Grosso, 114<br />Setor Campinas · Goiânia, GO<br />CEP 74513-040</address></dd>
+              </div>
+              <div>
+                <dt>WhatsApp</dt>
+                <dd><a href="https://wa.me/556281598510" data-wa="Olá! Vim pelo site da Território do Couro e gostaria de falar com a equipe sobre os produtos da loja." target="_blank" rel="noopener">(62) 8159-8510</a></dd>
+              </div>
+              <div>
+                <dt>Instagram</dt>
+                <dd><a href="https://www.instagram.com/territorio.docouro/" target="_blank" rel="noopener">@territorio.docouro</a></dd>
+              </div>
+            </dl>
+
+            <div class="visit-actions">
+              <a class="btn btn-light" href="https://wa.me/556281598510" data-wa="Olá! Vim pelo site da Território do Couro e gostaria de falar com a equipe sobre os produtos da loja." target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp" /></svg>
+                Falar no WhatsApp
+              </a>
+              <a class="btn btn-outline-light" href="https://www.google.com/maps/dir/?api=1&destination=Av.+Mato+Grosso,+114,+Setor+Campinas,+Goi%C3%A2nia+-+GO,+74513-040" target="_blank" rel="noopener">Como chegar</a>
+            </div>
+          </div>
+
+          <div class="visit-map reveal">
+            <iframe title="Mapa com a localização da Território do Couro" src="https://www.google.com/maps?q=Av.+Mato+Grosso,+114,+Setor+Campinas,+Goi%C3%A2nia+-+GO,+74513-040&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
       </section>
     </main>
 
-    <dialog class="detail-dialog" id="detail-dialog"><button class="dialog-close" aria-label="Fechar">×</button><p class="eyebrow" id="dialog-kicker"></p><h2 id="dialog-title"></h2><p id="dialog-copy"></p><a class="whatsapp-button" id="dialog-whatsapp" href="#" target="_blank" rel="noreferrer"><img src="/LogoWhatsapp.png" alt="" />Consultar no WhatsApp <strong>↗</strong></a></dialog>
     <footer class="site-footer">
-      <div class="footer-brand"><img src="/LogoSemFundo.png" alt="" /><strong>Território do Couro</strong><span>Matérias-primas e componentes para fabricação de calçados.</span></div>
-      <div class="footer-details"><span class="footer-label">Dados comerciais</span><span>CNPJ: 00.939.693/0001-80</span><span class="footer-address">Av. Mato Grosso, 114<br />Setor Campinas · Goiânia — GO<br />CEP 74513-040</span></div>
-      <div class="footer-links"><a href="https://www.instagram.com/_territoriodocouro/" target="_blank" rel="noreferrer"><img class="instagram-footer-logo" src="/LogoInsta.png" alt="" />Instagram ↗</a><a href="https://api.whatsapp.com/send/?phone=%2B556281598510&text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20a%20equipe.&type=phone_number&app_absent=0" target="_blank" rel="noreferrer"><img class="whatsapp-footer-logo" src="/LogoWhatsapp.png" alt="" />Atendimento pelo WhatsApp ↗</a><span>© 2026 Território do Couro</span></div>
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <img src="/logo.png" alt="" width="172" height="213" loading="lazy" />
+          <div>
+            <strong>Território do Couro</strong>
+            <p>Matérias-primas e componentes para fabricação de calçados.</p>
+          </div>
+        </div>
+        <nav class="footer-nav" aria-label="Rodapé">
+          <span class="footer-label">Navegue</span>
+          <a href="#produtos">Produtos</a>
+          <a href="#sobre">A loja</a>
+          <a href="#como-comprar">Como comprar</a>
+          <a href="#visite">Visite</a>
+        </nav>
+        <div class="footer-col">
+          <span class="footer-label">Contato</span>
+          <a href="https://wa.me/556281598510" data-wa="Olá! Vim pelo site e gostaria de falar com a equipe." target="_blank" rel="noopener">WhatsApp (62) 8159-8510</a>
+          <a href="https://www.instagram.com/territorio.docouro/" target="_blank" rel="noopener">Instagram @territorio.docouro</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-label">Dados comerciais</span>
+          <span>Av. Mato Grosso, 114 · Setor Campinas<br />Goiânia, GO · CEP 74513-040</span>
+          <span>CNPJ 00.939.693/0001-80</span>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>© <span data-year>2026</span> Território do Couro. Todos os direitos reservados.</span>
+      </div>
     </footer>
+
+    <a class="wa-float" href="https://wa.me/556281598510" data-wa="Olá! Vim pelo site da Território do Couro e gostaria de consultar disponibilidade e preços." target="_blank" rel="noopener" aria-label="Falar com a Território do Couro pelo WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp" /></svg>
+    </a>
+
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <symbol id="i-whatsapp" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3.6 20.4l1.2-4.1a8.6 8.6 0 1 1 3.2 3.1z" />
+        <path fill="currentColor" d="M9.1 7.6c.3-.3.7-.3.9 0l1 1.6c.2.3.1.6-.1.9l-.5.6c.6 1.3 1.6 2.3 2.9 2.9l.6-.5c.3-.2.6-.3.9-.1l1.6 1c.3.2.3.6 0 .9l-.6.7c-.5.5-1.3.7-2 .4a8.6 8.6 0 0 1-5-5c-.3-.7-.1-1.5.4-2z" />
+      </symbol>
+      <symbol id="i-instagram" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5" /><circle cx="12" cy="12" r="4" /></g>
+        <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
+      </symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5z" /><path d="M3 12.5l9 5 9-5" /><path d="M3 17l9 5 9-5" /></g>
+      </symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M4 5h16v11H9l-5 4z" /><path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M8 9.5h8M8 12.5h5" />
+      </symbol>
+      <symbol id="i-truck" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M2.5 6h11v10h-11zM13.5 9.5h4l3 3.5v3h-7z" /><circle cx="7" cy="17.5" r="1.8" fill="var(--card, #fff)" /><circle cx="17" cy="17.5" r="1.8" fill="var(--card, #fff)" /></g>
+      </symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linejoin="round" d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" /><circle cx="12" cy="9.5" r="2.5" /></g>
+      </symbol>
+    </svg>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
